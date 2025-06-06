@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuel S. Enverga University Foundation - Admission Application</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#9B0000',
+                        secondary: '#F5F5F5',
+                    }
+                }
+            },
+            daisyui: {
+                themes: ["light"]
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Barlow', sans-serif;
+            background-color: #f8f0f0;
+        }
+        .form-section {
+            display: none;
+        }
+        .form-section.active {
+            display: block;
+        }
+        .progress-bar {
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #9B0000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white py-4 shadow-md">
+        <div class="container mx-auto px-4 flex items-center">
+            <img src="/src/images/school_logo.png" alt="University Logo" class="h-16 mr-4">
+            <div>
+                <h1 class="text-primary font-bold text-xl md:text-2xl">Manuel S. Enverga University Foundation-Candelaria Inc.</h1>
+                <p class="text-gray-600 text-sm">Quezon Philippines</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Step 1: Personal Details -->
+        <div id="step1" class="form-section active">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="mb-6">
+                    <p class="text-gray-700">Step 1/5</p>
+                    <div class="progress-bar bg-gray-200 mt-2">
+                        <div class="progress-fill" style="width: 20%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-lg shadow-md p-6">
+                <h2 class="text-primary text-2xl font-bold mb-6">Personal Details</h2>
+
+                <form id="Personal_details">
+                        <div class="bg-white rounded-lg p-6 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                <input type="text" placeholder="Last name here" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white" id="last_name" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                <input type="text" placeholder="First name here" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white" id="first_name" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Middle Initial</label>
+                                <input type="text" placeholder="Middle initial here" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white" id="middle_initial" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Suffix (if applicable)</label>
+                            <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white" id="suffix">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-lg p-6">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Date of Birth</label>
+                                <input type="date" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white" id="birth_date" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Place of Birth</label>
+                                <input type="text" placeholder="Region, Province etc..." class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white" id="birth_place" required>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-6">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Age</label>
+                                <input type="number" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white" id="age" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Gender</label>
+                                <select class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white" id="gender" required>
+                                    <option value="" selected disabled>Select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 mt-6">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Citizenship</label>
+                            <input type="text" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Civil Status</label>
+                            <input type="text" placeholder="Single etc..." class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Religion</label>
+                            <input type="text" placeholder="Select religion" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Ethnicity (if applicable)</label>
+                            <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                        </div>
+                    </div>
+                </form>
+                
+
+                
+                <div class="flex justify-end mt-6">
+                    <button id="step1Next" class="bg-primary hover:bg-red-800 text-white py-2 px-6 rounded-lg">Continue</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 2: Contact and Address Information -->
+        <div id="step2" class="form-section">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="mb-6">
+                    <p class="text-gray-700">Step 2/5</p>
+                    <div class="progress-bar bg-gray-200 mt-2">
+                        <div class="progress-fill" style="width: 40%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-lg shadow-md p-6">
+                <h2 class="text-primary text-2xl font-bold mb-6">Contact and Address Information</h2>
+                
+                <form id="Contact_info">
+                        <div class="bg-white rounded-lg p-6 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Street</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Barangay/Village</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Municipality</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Province</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Zip code</label>
+                            <input type="text" placeholder="N/A if not applicable" class="w-full max-w-xs p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-lg p-6">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Home Address</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Temporary Address (if different from home)</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-6">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Mobile number</label>
+                                <input type="tel" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Telephone number</label>
+                                <input type="tel" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Preferred contact number</label>
+                                <input type="tel" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 mt-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Preferred contact email</label>
+                            <input type="email" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                        </div>
+                    </div>
+                </form>
+
+
+                
+                <div class="flex justify-end mt-6">
+                    <button id="step2Prev" class="border border-gray-300 text-gray-700 py-2 px-6 rounded-lg mr-2 hover:bg-gray-100">Previous</button>
+                    <button id="step2Next" class="bg-primary hover:bg-red-800 text-white py-2 px-6 rounded-lg">Continue</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 3: Educational Background -->
+        <div id="step3" class="form-section">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="mb-6">
+                    <p class="text-gray-700">Step 3/5</p>
+                    <div class="progress-bar bg-gray-200 mt-2">
+                        <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-lg shadow-md p-6">
+                <h2 class="text-primary text-2xl font-bold mb-6">Educational Background</h2>
+                
+                <form id="Educational_background">
+                        <div class="bg-white rounded-lg p-6 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Last school attended</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Strand Taken</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">School address</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">School type</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Year graduated</label>
+                            <input type="text" placeholder="N/A if not applicable" class="w-full max-w-xs p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Awards/Honors received (if applicable)</label>
+                            <textarea placeholder="N/A if not applicable" rows="4" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white"></textarea>
+                        </div>
+                    </div>
+                </form>
+
+
+                
+                <div class="flex justify-end mt-6">
+                    <button id="step3Prev" class="border border-gray-300 text-gray-700 py-2 px-6 rounded-lg mr-2 hover:bg-gray-100">Previous</button>
+                    <button id="step3Next" class="bg-primary hover:bg-red-800 text-white py-2 px-6 rounded-lg">Continue</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 4: Family Background -->
+        <div id="step4" class="form-section">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="mb-6">
+                    <p class="text-gray-700">Step 4/5</p>
+                    <div class="progress-bar bg-gray-200 mt-2">
+                        <div class="progress-fill" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-lg shadow-md p-6">
+                <h2 class="text-primary text-2xl font-bold mb-6">Family Background</h2>
+                
+                <form id="family_background">
+                        <div class="bg-white rounded-lg p-6 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Father's Name</label>
+                                    <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Occupation</label>
+                                    <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Contact number</label>
+                                    <input type="tel" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Mother's Name</label>
+                                    <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Occupation</label>
+                                    <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Contact number</label>
+                                    <input type="tel" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-lg p-6">
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Parent's Address</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Legal Guardian</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Number of Siblings</label>
+                                <input type="number" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 mt-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Family Income</label>
+                            <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                        </div>
+                    </div>
+                </form>
+
+
+                
+                <div class="flex justify-end mt-6">
+                    <button id="step4Prev" class="border border-gray-300 text-gray-700 py-2 px-6 rounded-lg mr-2 hover:bg-gray-100">Previous</button>
+                    <button id="step4Next" class="bg-primary hover:bg-red-800 text-white py-2 px-6 rounded-lg">Continue</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 5: Program Preferences -->
+        <div id="step5" class="form-section">
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <div class="mb-6">
+                    <p class="text-gray-700">Step 5/5</p>
+                    <div class="progress-bar bg-gray-200 mt-2">
+                        <div class="progress-fill" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 rounded-lg shadow-md p-6">
+                <h2 class="text-primary text-2xl font-bold mb-6">Program Preferences</h2>
+                
+                <form id="Preferences">
+                        <div class="bg-white rounded-lg p-6 mb-6">
+                        <h3 class="font-semibold text-lg mb-4">Preferred Course</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Course / Program</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Major (if applicable)</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">School Year Term</label>
+                            <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 mb-6">
+                        <h3 class="font-semibold text-lg mb-4">Alternate Course 1</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Course / Program</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Major (if applicable)</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">School Year Term</label>
+                            <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6">
+                        <h3 class="font-semibold text-lg mb-4">Alternate Course 2</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Course / Program</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Major (if applicable)</label>
+                                <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">School Year Term</label>
+                            <input type="text" placeholder="N/A if not applicable" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                        </div>
+                    </div>
+                </form>
+
+
+                
+                <div class="flex justify-end mt-6">
+                    <button id="step5Prev" class="border border-gray-300 text-gray-700 py-2 px-6 rounded-lg mr-2 hover:bg-gray-100">Previous</button>
+                    <button id="submitForm" class="bg-primary hover:bg-red-800 text-white py-2 px-6 rounded-lg">Submit your Application</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Confirmation Page -->
+        <div id="confirmation" class="form-section">
+            <div class="bg-white rounded-lg shadow-md p-16 text-center">
+                <h2 class="text-primary text-3xl font-bold mb-4">Admission Application Successfully Sent!</h2>
+                <p class="text-xl mb-8">you can now access the Admission Tracker.</p>
+                <button id="continueBtn" class="bg-primary hover:bg-red-800 text-white py-3 px-8 rounded-lg text-lg">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all form sections
+            const sections = document.querySelectorAll('.form-section');
+            
+            // Navigation functions
+            function showSection(sectionId) {
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(sectionId).classList.add('active');
+                
+                // Save current step to localStorage
+                localStorage.setItem('currentStep', sectionId);
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            // Step 1 navigation
+            document.getElementById('step1Next').addEventListener('click', function() {
+                showSection('step2');
+            });
+            
+            // Step 2 navigation
+            document.getElementById('step2Prev').addEventListener('click', function() {
+                showSection('step1');
+            });
+            document.getElementById('step2Next').addEventListener('click', function() {
+                showSection('step3');
+            });
+            
+            // Step 3 navigation
+            document.getElementById('step3Prev').addEventListener('click', function() {
+                showSection('step2');
+            });
+            document.getElementById('step3Next').addEventListener('click', function() {
+                showSection('step4');
+            });
+            
+            // Step 4 navigation
+            document.getElementById('step4Prev').addEventListener('click', function() {
+                showSection('step3');
+            });
+            document.getElementById('step4Next').addEventListener('click', function() {
+                showSection('step5');
+            });
+            
+            // Step 5 navigation
+            document.getElementById('step5Prev').addEventListener('click', function() {
+                showSection('step4');
+            });
+            document.getElementById('submitForm').addEventListener('click', function() {
+                showSection('confirmation');
+            });
+            
+            // Confirmation page
+            document.getElementById('continueBtn').addEventListener('click', function() {
+                // Reset form and go back to step 1
+                localStorage.removeItem('currentStep');
+                showSection('step1');
+            });
+            
+            // Check if there's a saved step in localStorage
+            const savedStep = localStorage.getItem('currentStep');
+            if (savedStep) {
+                showSection(savedStep);
+            }
+        });
+    </script>
+</body>
+</html>

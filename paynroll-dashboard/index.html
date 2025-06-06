@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paynroll Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .rotate-180 {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-barlow">
+    <div class="min-h-screen flex flex-col lg:flex-row">
+        <!-- Mobile Header with Burger Menu -->
+        <div class="lg:hidden bg-[#8f0000] text-white p-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold">Juan Dela Cruz</h1>
+                <p class="text-sm opacity-80">Applicant #: EUC-ADM103</p>
+            </div>
+            <button id="mobile-menu-button" class="text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Sidebar - Hidden on mobile by default -->
+        <div id="sidebar" class="bg-[#8f0000] text-white w-full lg:w-64 p-4 hidden lg:block">
+            <!-- User Info - Hidden on mobile since it's in the header -->
+            <img src="/src/images/school_logo.png" class="w-[120px] h-[120px] rounded-full mb-20 mx-auto mt-20">
+            <div class="mb-8 lg:block hidden">
+                <h1 class="text-xl font-bold">Juan Dela Cruz</h1>
+                <p class="text-sm opacity-80">Applicant #: EUC-ADM103</p>
+                <p class="text-sm opacity-80">juandelacruz@gmail.com</p>
+                <p class="text-sm mt-2">Course applied: <span class="font-medium">BS Computer Science</span></p>
+            </div>
+            
+            <nav class="space-y-2">
+                <a href="#" class="block py-2 px-4 hover:bg-[#Ffdf00] rounded-lg hover:text-[#8f0000] transition ease-out duration-300" onclick="showSection('dashboard')">Dashboard</a>
+                <a href="#" class="block py-2 px-4 hover:bg-[#Ffdf00] rounded-lg hover:text-[#8f0000] transition ease-out duration-300" onclick="showSection('schedule')">Schedule</a>
+                <a href="#" class="block py-2 px-4 hover:bg-[#Ffdf00] rounded-lg hover:text-[#8f0000] transition ease-out duration-300" onclick="showSection('updates')">Updates</a>
+                <a href="#" class="block py-2 px-4 hover:bg-[#Ffdf00] rounded-lg hover:text-[#8f0000] transition ease-out duration-300" onclick="showSection('profile')">Profile</a>
+            </nav>
+            
+            <div class="mt-auto pt-4">
+                <a href="#" class="flex items-center py-2 px-4 text-white hover:bg-[#Ffdf00] rounded-lg hover:text-[#8f0000]">
+                    <i class="fas fa-sign-out-alt mr-2 transition ease-out duration-300"></i> Log-out
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-4 md:p-6">
+            <div class="mb-6 lg:block hidden">
+                <h1 class="text-2xl font-bold">EUC-ADM103</h1>
+                <p class="text-lg">Juan Dela Cruz</p>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboard-section" class="section-content">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Admission Status -->
+                    <div class="bg-white rounded-lg shadow p-6 lg:col-span-2">
+                        <h2 class="text-xl font-bold mb-4 text-[#8f0000]">Admission Status</h2>
+                        
+                        <!-- Progress Steps -->
+                        <div class="mb-8">
+                            <div class="flex justify-between items-center mb-2">
+                                <div class="flex-1 relative">
+                                    <div class="absolute inset-0 flex items-center">
+                                        <div class="w-full border-t-2 border-gray-300"></div>
+                                    </div>
+                                    <div class="relative flex justify-between">
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-8 w-8 rounded-full bg-[#8f0000] flex items-center justify-center text-white font-bold ">1</div>
+                                            <span class="text-xs mt-1">Requirements</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-8 w-8 rounded-full bg-[#Ffdf00] flex items-center justify-center text-[#8f0000] font-bold">2</div>
+                                            <span class="text-xs mt-1">Exam</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold">3</div>
+                                            <span class="text-xs mt-1">Result</span>
+                                        </div>
+                                        <div class="flex flex-col items-center">
+                                            <div class="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold">4</div>
+                                            <span class="text-xs mt-1">Enrollment</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center text-sm text-gray-600 mb-4">
+                                <span class="font-medium text-[#8f0000]">2/5</span> requirements completed
+                            </div>
+                            
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4">
+                                <div class="bg-[#8f0000] h-2.5 rounded-full" style="width: 40%"></div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 space-y-4">
+                            <div class="flex items-center justify-between border-b pb-3">
+                                <div class="flex items-center">
+                                    <span>2x2 Picture</span>
+                                    <span class="ml-2 text-green-500"><i class="fas fa-check-circle"></i></span>
+                                </div>
+                                <button class="bg-[#Ffdf00] text-[#8f0000] px-4 py-1 rounded cursor-not-allowed transition ease-out duration-300" disabled>Uploaded</button>
+                            </div>
+                            <div class="flex items-center justify-between border-b pb-3">
+                                <div class="flex items-center">
+                                    <span>Senior High Transcript</span>
+                                    <span class="ml-2 text-green-500"><i class="fas fa-check-circle"></i></span>
+                                </div>
+                                <button class="bg-[#Ffdf00] text-[#8f0000] px-4 py-1 rounded cursor-not-allowed transition ease-out duration-300" disabled>Uploaded</button>
+                            </div>
+                            <div class="flex items-center justify-between border-b pb-3">
+                                <div class="flex items-center">
+                                    <span>Good Moral</span>
+                                    <span class="ml-2 text-yellow-500"><i class="fas fa-exclamation-circle"></i></span>
+                                </div>
+                                <button class="bg-[#8f0000] text-white px-4 py-1 rounded hover:bg-[#ffdf00] hover:text-[#8f0000] transition ease-out duration-300">Upload</button>
+                            </div>
+                            <div class="flex items-center justify-between border-b pb-3">
+                                <div class="flex items-center">
+                                    <span>Medical Certificate</span>
+                                    <span class="ml-2 text-red-500"><i class="fas fa-times-circle"></i></span>
+                                </div>
+                                <button class="bg-[#8f0000] text-white px-4 py-1 rounded hover:bg-[#ffdf00] hover:text-[#8f0000] transition ease-out duration-300">Upload</button>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <span>NCae Result</span>
+                                    <span class="ml-2 text-red-500"><i class="fas fa-times-circle"></i></span>
+                                </div>
+                                <button class="bg-[#8f0000] text-[white] px-4 py-1 rounded hover:bg-[#ffdf00] hover:text-[#8f0000] transition ease-out duration-300">Upload</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Exam Schedule with Google Calendar -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h2 class="text-xl font-bold mb-4 text-[#8f0000]">Entrance Exam Schedule</h2>
+                        
+                        <!-- Google Calendar Embed -->
+                        <div class="aspect-w-16 aspect-h-9">
+                            <iframe 
+                                src="https://calendar.google.com/calendar/embed?height=400&wkst=1&bgcolor=%23ffffff&ctz=UTC&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0" 
+                                style="border-width:0" 
+                                width="100%" 
+                                height="400" 
+                                frameborder="0" 
+                                scrolling="no">
+                            </iframe>
+                        </div>
+                        
+                        <div class="mt-4 text-center">
+                            <a href="https://calendar.google.com/calendar" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                                <i class="fas fa-external-link-alt mr-1"></i> Open in Google Calendar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Updates Section -->
+                <div class="mt-6 bg-white rounded-lg shadow p-6 font-light">
+                    <h2 class="text-xl font-bold mb-4 text-[#8f0000]">Updates</h2>
+                    
+                    <div class="space-y-2">
+                        <!-- Accordion Item 1 -->
+                        <div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 text-left">
+                                <h3 class="font-semibold text-lg">Metal Exchange</h3>
+                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content hidden p-4 border-t">
+                                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <div class="mt-2 text-sm text-gray-500 flex items-center">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    <span>Posted on: May 15, 2023</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Accordion Item 2 -->
+                        <div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 text-left">
+                                <h3 class="font-semibold">Michael Tony</h3>
+                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content hidden p-4 border-t">
+                                <p class="text-gray-600">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <div class="mt-2 text-sm text-gray-500 flex items-center">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    <span>Posted on: May 10, 2023</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Accordion Item 3 -->
+                        <div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 text-left">
+                                <h3 class="font-semibold">Joseph Ray</h3>
+                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content hidden p-4 border-t">
+                                <p class="text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                <div class="mt-2 text-sm text-gray-500 flex items-center">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    <span>Posted on: May 5, 2023</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Accordion Item 4 -->
+                        <div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 text-left">
+                                <h3 class="font-semibold">Thomas Adison</h3>
+                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content hidden p-4 border-t">
+                                <p class="text-gray-600">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <div class="mt-2 text-sm text-gray-500 flex items-center">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    <span>Posted on: April 28, 2023</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Accordion Item 5 -->
+                        <div class="border rounded-lg overflow-hidden">
+                            <button class="accordion-header w-full flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 text-left">
+                                <h3 class="font-semibold">Michael Tony</h3>
+                                <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                            </button>
+                            <div class="accordion-content hidden p-4 border-t">
+                                <p class="text-gray-600">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                                <div class="mt-2 text-sm text-gray-500 flex items-center">
+                                    <i class="fas fa-calendar-alt mr-2"></i>
+                                    <span>Posted on: April 20, 2023</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedule Section -->
+            <div id="schedule-section" class="section-content hidden bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4 text-[#8f0000]">Entrance Exam Schedule</h2>
+                
+                <div class="text-center mb-8">
+                    <p class="text-lg font-semibold">Entrance Exam Schedule:</p>
+                    <p class="text-xl text-[#8f0000] font-bold">June 15, 2023</p>
+                    <p class="text-lg">9:00 AM - 12:00 PM</p>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="text-lg font-semibold mb-4">June 2023</h3>
+                    <div class="grid grid-cols-7 gap-2 text-center">
+                        <div class="font-semibold py-2">Sun</div>
+                        <div class="font-semibold py-2">Mon</div>
+                        <div class="font-semibold py-2">Tue</div>
+                        <div class="font-semibold py-2">Wed</div>
+                        <div class="font-semibold py-2">Thu</div>
+                        <div class="font-semibold py-2">Fri</div>
+                        <div class="font-semibold py-2">Sat</div>
+                        
+                        <div class="py-2 text-gray-400">28</div>
+                        <div class="py-2 text-gray-400">29</div>
+                        <div class="py-2 text-gray-400">30</div>
+                        <div class="py-2 text-gray-400">31</div>
+                        <div class="py-2">1</div>
+                        <div class="py-2">2</div>
+                        <div class="py-2">3</div>
+                        
+                        <div class="py-2">4</div>
+                        <div class="py-2">5</div>
+                        <div class="py-2">6</div>
+                        <div class="py-2">7</div>
+                        <div class="py-2">8</div>
+                        <div class="py-2">9</div>
+                        <div class="py-2">10</div>
+                        
+                        <div class="py-2">11</div>
+                        <div class="py-2">12</div>
+                        <div class="py-2">13</div>
+                        <div class="py-2">14</div>
+                        <div class="py-2 bg-[#8f0000] text-white rounded-full font-bold">15</div>
+                        <div class="py-2">16</div>
+                        <div class="py-2">17</div>
+                        
+                        <div class="py-2">18</div>
+                        <div class="py-2">19</div>
+                        <div class="py-2">20</div>
+                        <div class="py-2">21</div>
+                        <div class="py-2">22</div>
+                        <div class="py-2">23</div>
+                        <div class="py-2">24</div>
+                        
+                        <div class="py-2">25</div>
+                        <div class="py-2">26</div>
+                        <div class="py-2">27</div>
+                        <div class="py-2">28</div>
+                        <div class="py-2">29</div>
+                        <div class="py-2">30</div>
+                        <div class="py-2 text-gray-400">1</div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <a href="#" class="text-blue-600 hover:text-blue-800 inline-flex items-center" onclick="showSection('dashboard')">
+                        <i class="fas fa-calendar-alt mr-1"></i> View Google Calendar
+                    </a>
+                </div>
+            </div>
+
+            <!-- Updates Section (standalone) -->
+            <div id="updates-section" class="section-content hidden bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4 text-[#8f0000]">My mail</h2>
+                
+                <div class="border-t border-gray-300 my-4"></div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">Metal Exchange</h4>
+                        <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">Michael Tony</h4>
+                        <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">Joseph Ray</h4>
+                        <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">Thomas Adison</h4>
+                        <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2">Michael Tony</h4>
+                        <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div id="profile-section" class="section-content hidden bg-white rounded-lg shadow p-6">
+
+            <div class="bg-[#8f0000] w-full h-[200px] mx-auto flex items-center p-4">
+            <img src="/src/images/download (19).jpg" class="w-[100px] h-[100px] rounded-full mr-4" />
+            <h2 class="text-xl font-bold text-white">Juan Dela Cruz</h2>
+            </div>
+
+
+                <div class="space-y-4">
+                    <div>
+                        <p class="font-semibold">Applicant #:</p>
+                        <p>EUC-ADM103</p>
+                    </div>
+                    
+                    <div>
+                        <p class="font-semibold">Email:</p>
+                        <p>juandelacruz@gmail.com</p>
+                    </div>
+                    
+                    <div>
+                        <p class="font-semibold">Course applied:</p>
+                        <p>BS Computer Science</p>
+                    </div>
+                    
+                    <button class="mt-6 bg-[#8f0000] text-white px-6 py-2 rounded-lg hover:bg-[#ffdf00] hover:text-[#8f0000] transition ease-out duration-300">
+                        Log-out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show the selected section and hide others
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section-content').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show the selected section
+            document.getElementById(sectionId + '-section').classList.remove('hidden');
+            
+            // Update active nav link (for sidebar)
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('bg-[#Ffdf00]', 'text-[#8f0000]');
+            });
+            
+            // Highlight the active link
+            const activeLink = document.querySelector(`nav a[onclick="showSection('${sectionId}')"]`);
+            if (activeLink) {
+                activeLink.classList.add('bg-[#Ffdf00]', 'text-[#8f0000]');
+            }
+        }
+
+        // Initialize to show dashboard by default
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('dashboard');
+        });
+
+        // Toggle mobile menu
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+        });
+
+        // Simulate file upload (for demo purposes)
+        document.querySelectorAll('button:not([disabled])').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (e.target.textContent === 'Upload') {
+                    e.target.textContent = 'Uploading...';
+                    setTimeout(() => {
+                        e.target.textContent = 'Uploaded';
+                        e.target.classList.remove('bg-[#8f0000]', 'hover:bg-[#ffdf00]', 'hover:text-[#8f0000]');
+                        e.target.classList.add('bg-[#Ffdf00]', 'text-[#8f0000]', 'cursor-not-allowed');
+                        e.target.disabled = true;
+                        
+                        // Update progress
+                        const progressBar = document.querySelector('.bg-[#8f0000]');
+                        const currentWidth = parseInt(progressBar.style.width) || 40;
+                        progressBar.style.width = (currentWidth + 15) + '%';
+                        
+                        // Update completed count
+                        const countElement = document.querySelector('.text-[#8f0000]');
+                        const currentCount = parseInt(countElement.textContent.split('/')[0]);
+                        countElement.textContent = (currentCount + 1) + '/5';
+                        
+                        // Update icon
+                        const parentDiv = e.target.closest('.flex.items-center.justify-between');
+                        const icon = parentDiv.querySelector('.fas');
+                        icon.classList.remove('fa-exclamation-circle', 'fa-times-circle', 'text-yellow-500', 'text-red-500');
+                        icon.classList.add('fa-check-circle', 'text-green-500');
+                    }, 1500);
+                }
+            });
+        });
+
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('i');
+                
+                // Toggle content visibility
+                content.classList.toggle('hidden');
+                
+                // Rotate icon
+                icon.classList.toggle('rotate-180');
+            });
+        });
+    </script>
+</body>
+</html>
